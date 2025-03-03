@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EazyShip Rwanda - Shipment Tracking Made Easy</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="icon" href="assets/images/logo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="EazyShip Rwanda Logo">
+      <h1>EazyShip Rwanda</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tracking">Track Shipment</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="loginBtn">Login</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Shipment Tracking Made Easy</h2>
+      <p>Track your packages in real-time and manage your shipments effortlessly.</p>
+      <a href="#tracking" class="cta-btn">Track Now</a>
+    </div>
+  </section>
+
+  <!-- Tracking Section -->
+  <section id="tracking" class="tracking">
+    <h2>Track Your Shipment</h2>
+    <form id="trackingForm">
+      <input type="text" id="productId" placeholder="Enter Product ID" required>
+      <button type="submit">Track</button>
+    </form>
+    <div id="trackingResult">
+      <!-- Tracking results will be displayed here -->
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+      <div class="card">
+        <img src="assets/images/tracking-icon.png" alt="Tracking Icon">
+        <h3>Real-Time Tracking</h3>
+        <p>Track your shipments in real-time with our advanced tracking system.</p>
+      </div>
+      <div class="card">
+        <img src="assets/images/tracking-icon.png" alt="Payment Icon">
+        <h3>Multiple Payment Options</h3>
+        <p>Pay with mobile money, credit cards, or bank transfers.</p>
+      </div>
+      <div class="card">
+        <img src="assets/images/tracking-icon.png" alt="Integration Icon">
+        <h3>E-commerce Integration</h3>
+        <p>Seamlessly integrate with Kikuu, Alibaba, and Amazon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="#"><img src="assets/icons/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/icons/twitter.svg" alt="Twitter"></a>
+        <a href="#"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
+      </div>
+      <p>&copy; 2023 EazyShip Rwanda. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/tracking.js"></script>
+  <script src="scripts/payment.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
