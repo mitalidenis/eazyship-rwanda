@@ -14,8 +14,33 @@ const countries = [
   'South Africa'
 ]
 
+// Define interfaces for type safety
+interface FormData {
+  fromCountry: string
+  toCountry: string
+  length: string
+  width: string
+  height: string
+  weight: string
+}
+
+interface User {
+  name: string
+  email: string
+  joinedDate: string
+}
+
+interface Order {
+  id: string
+  date: string
+  status: string
+  items: string
+  from: string
+  trackingNumber: string
+}
+
 export default function UserDashboard() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     fromCountry: 'Rwanda',
     toCountry: '',
     length: '',
@@ -23,17 +48,17 @@ export default function UserDashboard() {
     height: '',
     weight: ''
   })
-  const [shippingCost, setShippingCost] = useState(null)
+  const [shippingCost, setShippingCost] = useState<number | null>(null)
 
   // Mock user data
-  const user = {
-    name: 'John Doe',
-    email: 'john@example.com',
+  const user: User = {
+    name: 'Mitali Denis',
+    email: 'mitalidenis5@gmail.com',
     joinedDate: '2025-01-15'
   }
 
   // Mock order data
-  const orders = [
+  const orders: Order[] = [
     {
       id: 'ORD001',
       date: '2025-03-01',
@@ -52,7 +77,7 @@ export default function UserDashboard() {
     }
   ]
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
@@ -60,7 +85,7 @@ export default function UserDashboard() {
     }))
   }
 
-  const calculateShipping = (e) => {
+  const calculateShipping = (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.toCountry) {
       alert('Please select a destination country')
@@ -99,10 +124,6 @@ export default function UserDashboard() {
                       <dt className="text-sm font-medium text-gray-500">Email</dt>
                       <dd className="mt-1 text-sm text-gray-900">{user.email}</dd>
                     </div>
-                    <div>
-                      <dt className="text-sm font-medium text-gray-500">Member Since</dt>
-                      <dd className="mt-1 text-sm text-gray-900">{user.joinedDate}</dd>
-                    </div>
                   </dl>
                 </div>
               </div>
@@ -122,7 +143,7 @@ export default function UserDashboard() {
                         id="fromCountry"
                         name="fromCountry"
                         value={formData.fromCountry}
-                        onChange={handleChange}
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChange(e)}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 text-gray-900"
                       >
                         {countries.map(country => (
@@ -141,7 +162,7 @@ export default function UserDashboard() {
                         id="toCountry"
                         name="toCountry"
                         value={formData.toCountry}
-                        onChange={handleChange}
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChange(e)}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 text-gray-900"
                         required
                       >

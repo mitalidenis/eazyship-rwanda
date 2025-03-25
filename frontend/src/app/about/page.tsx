@@ -15,9 +15,18 @@ export default function AboutPage() {
               </p>
             </blockquote>
             <figcaption className="mt-8">
-              <div className="mt-3 text-base">
-                <div className="font-semibold text-white">Denis Mitali</div>
-                <div className="text-primary-100">CEO & Founder, EazyShip Rwanda</div>
+              <div className="flex flex-col items-center">
+                <Image 
+                  src="https://media.licdn.com/dms/image/v2/D5603AQHLB_VmZGTdRQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710413762933?e=1748476800&v=beta&t=5XcpRoUsz5hJLN_uuIlOdwknYEBGdpRAGu5qjf00Kpk" 
+                  alt="Denis Mitali, CEO & Founder of EazyShip Rwanda" 
+                  width={200} 
+                  height={200} 
+                  className="rounded-full mb-4 object-cover"
+                />
+                <div className="mt-3 text-base">
+                  <div className="font-semibold text-white">Denis Mitali</div>
+                  <div className="text-primary-100">CEO & Founder, EazyShip Rwanda</div>
+                </div>
               </div>
             </figcaption>
           </figure>

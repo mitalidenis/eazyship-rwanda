@@ -3,9 +3,28 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'cdn.flightsim.to', 'media.licdn.com', 'app.all-forward.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.flightsim.to',
+        port: '',
+        pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+        port: '',
+        pathname: '/dms/image/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'app.all-forward.com',
+        port: '',
+        pathname: '/upload/BlogsImages/**',
+      },
+    ],
   },
-  // Add any other domains you need for images here
   async headers() {
     return [
       {
@@ -32,3 +51,5 @@ const nextConfig = {
     ]
   },
 }
+
+module.exports = nextConfig

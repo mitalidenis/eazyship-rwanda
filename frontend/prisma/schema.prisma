@@ -1,0 +1,44 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String
+  role      UserRole  @default(USER)
+  phone     String?
+  address   String?
+  shipments Shipment[]
+}
+
+model Shipment {
+  id             String   @id @default(cuid())
+  userId         String
+  user           User            @relation(fields: [userId], references: [id])
+  date           DateTime        @default(now())
+  status         String         @default("PENDING")
+  trackingNumber String          @unique
+  items          String   @default("[]") // JSON string of items
+  from           String
+  to             String
+  totalCost      Float    @default(0)
+}
+
+enum ShipmentStatus {
+  PENDING
+  IN_TRANSIT
+  DELIVERED
+  CANCELLED
+}

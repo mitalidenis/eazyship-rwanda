@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { GlobeAltIcon, TruckIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
@@ -13,27 +14,35 @@ export default function Home() {
     e.preventDefault()
     const form = e.target as HTMLFormElement
     const trackingId = (form.elements.namedItem('tracking') as HTMLInputElement).value
-    setTrackingResult(`Tracking number ${trackingId} is currently in transit. Expected delivery: March 10, 2025`)
+    setTrackingResult(`Tracking number ${trackingId} is currently in transit. Expected delivery: March 31, 2025`)
     setFormKey(formKey + 1)
   }
 
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="bg-primary-600 text-white">
-        <div className="px-6">
-          <div className="mx-auto max-w-2xl pt-16 pb-20">
-            <div className="text-center">
-              <h1 className="text-5xl font-bold tracking-tight sm:text-7xl font-serif">
-                EazyShip Rwanda
-              </h1>
-              <h2 className="text-3xl mt-4 font-bold tracking-tight text-primary-100">
-                Your Trusted Shipping Partner in Rwanda
-              </h2>
-              <p className="mt-6 text-lg leading-8 text-primary-50">
-                Fast, reliable, and secure shipping solutions connecting Rwanda to the world. Shop from international stores like Amazon, Alibaba, and Kikuu with ease.
-              </p>
-            </div>
+      <div className="relative h-[600px] overflow-hidden bg-[#1A2C4F]">
+        <Image 
+          src="https://cdn.flightsim.to/images/25/rwandair-cargo-9xr-ww---pmdg-737-800-24631-1686074787-dVJ9F.jpg" 
+          alt="EazyShip Rwanda Cargo Background" 
+          fill 
+          priority
+          unoptimized
+          className="absolute z-0 object-cover"
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <div className="relative z-20 text-white h-full flex items-center justify-center">
+          <div className="text-center max-w-2xl px-6">
+            <h1 className="text-5xl font-bold tracking-tight sm:text-7xl font-serif mb-4 whitespace-nowrap">
+              EazyShip Rwanda
+            </h1>
+            <h2 className="text-3xl font-bold tracking-tight text-white mb-4">
+              Your Trusted Shipping Partner in Rwanda
+            </h2>
+            <p className="text-lg leading-8 text-gray-200">
+              Fast, reliable, and secure shipping solutions connecting Rwanda to the world. Shop from international stores like Amazon, Alibaba, and Kikuu with ease.
+            </p>
           </div>
         </div>
       </div>
@@ -60,7 +69,7 @@ export default function Home() {
                   name="tracking"
                   type="text"
                   required
-                  className="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                  className="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-offset-2 focus:ring-primary-600 sm:text-sm sm:leading-6"
                   placeholder="Enter your tracking number"
                 />
                 <button

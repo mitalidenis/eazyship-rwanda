@@ -1,13 +1,24 @@
 'use client'
 
+import Image from 'next/image'
 import { TruckIcon, GlobeAltIcon, ShieldCheckIcon, CubeIcon, BuildingStorefrontIcon, ClockIcon } from '@heroicons/react/24/outline'
 
 export default function Services() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="bg-primary-600 text-white">
-        <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div className="relative bg-primary-600 text-white">
+        <Image 
+          src="https://app.all-forward.com/upload/BlogsImages/00000/00000046_cmrh6sddk5ikg.jpg" 
+          alt="Shipping Services Background" 
+          fill 
+          priority
+          unoptimized
+          className="absolute z-0 object-cover"
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <div className="relative z-20 px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">
               Our Services
