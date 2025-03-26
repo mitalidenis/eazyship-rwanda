@@ -22,7 +22,7 @@ function DashboardPageContent() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Redirect logic
+  
     if (status === 'unauthenticated') {
       router.push('/')
     }
