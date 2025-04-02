@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import Logo from './Logo'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

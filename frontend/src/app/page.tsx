@@ -14,7 +14,7 @@ export default function Home() {
     e.preventDefault()
     const form = e.target as HTMLFormElement
     const trackingId = (form.elements.namedItem('tracking') as HTMLInputElement).value
-    setTrackingResult(`Tracking number ${trackingId} is currently in transit. Expected delivery: March 31, 2025`)
+    setTrackingResult(`Tracking number ${trackingId} is currently in transit. Expected delivery: April 15, 2025`)
     setFormKey(formKey + 1)
   }
 
@@ -129,7 +129,7 @@ export default function Home() {
                   Global Coverage
                 </dt>
                 <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">Ship to and from anywhere in the world with our extensive network of partners.</p>
+                  <p className="flex-auto">Ship to and from Rwanda with our extensive network of partners.</p>
                 </dd>
               </div>
               <div className="flex flex-col">

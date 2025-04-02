@@ -1,32 +1,26 @@
-import NextAuth, { NextAuthOptions, User } from 'next-auth'
+import NextAuth, { NextAuthOptions, User as NextAuthUser } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import prisma from '@/lib/prisma'
+import bcrypt from 'bcryptjs'
+import { UserRole } from '@prisma/client'
 
-// Define user roles
-export type UserRole = 'ADMIN' | 'USER' | 'GUEST'
-
-// Extend the default User interface
+// Extend User type to include password and role
 declare module 'next-auth' {
   interface User {
     id: string
+    name?: string
+    email?: string
     role?: UserRole
   }
+
   interface Session {
     user: {
       id: string
+      name?: string
+      email?: string
       role?: UserRole
-      name?: string | null
-      email?: string | null
-      image?: string | null
     }
-  }
-}
-
-declare module 'next-auth/jwt' {
-  interface JWT {
-    id: string
-    role?: UserRole
   }
 }
 
@@ -36,74 +30,122 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        email: { label: 'Email', type: 'email' },
-        password: { label: 'Password', type: 'password' },
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+        name: { label: "Name", type: "text", optional: true },
+        role: { label: "Role", type: "text", optional: true }
       },
-      async authorize(credentials: Record<string, string> | undefined) {
-        // Enhanced logging
-        console.log('Authorization attempt:', credentials?.email)
+      async authorize(credentials, req) {
+        console.log('Authorization attempt:', {
+          email: credentials?.email,
+          role: credentials?.role
+        })
 
-        // Add more robust validation
+        // Validate input
         if (!credentials?.email || !credentials?.password) {
-          console.log('Missing credentials')
-          return null
+          console.error('Invalid credentials: Missing email or password')
+          throw new Error('Invalid credentials')
         }
 
         try {
-          // Example of more secure authentication
-          if (
-            credentials.email === 'mitalidenis5@gmail.com' && 
-            credentials.password === 'Denis455!!'
-          ) {
-            return { 
-              id: '1', 
-              name: 'Denis Mitali', 
-              email: credentials.email,
-              role: 'ADMIN'
+          // Check if user exists
+          let user = await prisma.user.findUnique({
+            where: { email: credentials.email }
+          })
+
+          // If user doesn't exist and a name is provided, create a new user
+          if (!user) {
+            // If no name is provided during login, throw an error
+            if (!credentials.name) {
+              console.error('User not found and no name provided')
+              throw new Error('User not found. Please sign up first.')
             }
+
+            // Create new user
+            const hashedPassword = await bcrypt.hash(credentials.password, 10)
+            
+            user = await prisma.user.create({
+              data: {
+                email: credentials.email,
+                name: credentials.name,
+                password: hashedPassword,
+                role: credentials.role === 'admin' ? UserRole.ADMIN : UserRole.USER
+              }
+            })
+
+            console.log('New user created:', user.email, user.role)
           }
-          
-          console.log('Authentication failed for email:', credentials.email)
-          return null
+
+          // Verify password
+          const isPasswordValid = await bcrypt.compare(
+            credentials.password, 
+            user.password
+          )
+
+          if (!isPasswordValid) {
+            console.error('Invalid password for user:', user.email)
+            throw new Error('Invalid password')
+          }
+
+          // Verify role for admin access
+          if (credentials.role === 'admin' && user.role !== UserRole.ADMIN) {
+            console.error('Non-admin user attempting admin login:', user.email)
+            throw new Error('Access denied')
+          }
+
+          console.log('Successful login:', user.email, user.role)
+
+          // Return user object for session
+          return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role
+          } as NextAuthUser
         } catch (error) {
           console.error('Authorization error:', error)
-          return null
+          throw error
         }
       }
     })
   ],
-  pages: {
-    signIn: '/auth/login',
-    error: '/auth/login',
-    signOut: '/auth/login'
-  },
-  session: {
-    strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60, // 30 days
-  },
-  jwt: {
-    maxAge: 30 * 24 * 60 * 60, // 30 days
-  },
   callbacks: {
-    async redirect({ url, baseUrl }) {
-      // Custom redirect callback to prevent unwanted redirects
-      return baseUrl
-    },
-    async session({ session, token }: { session: any, token: any }) {
-      session.user.id = token.id
-      session.user.role = token.role || 'USER'
-      return session
-    },
-    async jwt({ token, user }: { token: any, user?: User }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id
-        token.role = user.role || 'USER'
+        token.role = user.role
+        token.name = user.name
+        console.log('JWT token created:', { 
+          id: token.id, 
+          role: token.role 
+        })
       }
       return token
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id as string
+        session.user.role = token.role as UserRole
+        session.user.name = token.name as string
+        console.log('Session created:', { 
+          id: session.user.id, 
+          role: session.user.role 
+        })
+      }
+      return session
     }
   },
-  debug: false,  // Explicitly disable debug mode
+  pages: {
+    signIn: '/auth/login',
+    error: '/auth/error'
+  },
+  session: {
+    strategy: 'jwt'
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+  debug: process.env.NODE_ENV !== 'production'
 }
 
 const handler = NextAuth(authOptions)
+
 export { handler as GET, handler as POST }

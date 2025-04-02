@@ -1,3 +1,4 @@
+// c:\Users\Admin\CascadeProjects\eazyship-rwanda\frontend\src\types\next-auth.d.ts
 import 'next-auth'
 import { UserRole } from '@prisma/client'
 
@@ -10,18 +11,15 @@ declare module 'next-auth' {
   }
 
   interface Session {
-    user: {
-      id: string
-      name?: string | null
-      email?: string | null
-      role?: UserRole
-    }
+    user: User
   }
 }
 
 declare module 'next-auth/jwt' {
   interface JWT {
     id: string
+    name?: string | null
+    email?: string | null
     role?: UserRole
   }
 }

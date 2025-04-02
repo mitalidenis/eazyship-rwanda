@@ -10,24 +10,38 @@ export async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname
 
   // Public routes that don't require authentication
-  const publicPaths = ['/auth/login', '/']
+  const publicPaths = ['/auth/login', '/', '/auth/signup']
 
   // Admin dashboard routes
-  const adminPaths = ['/admin/dashboard', '/admin/shipments', '/admin/settings']
+  const adminPaths = ['/admin/dashboard/page', '/admin/shipments', '/admin/settings']
 
-  // Check if the path is a public path
+  // User dashboard routes
+  const userPaths = ['/dashboard', '/dashboard/settings']
+
+  // If the path is public, allow access
   if (publicPaths.includes(path)) {
     return NextResponse.next()
   }
 
-  // Allow access to admin paths if token exists
-  if (adminPaths.includes(path) && token) {
-    return NextResponse.next()
-  }
-
-  // Redirect to login if no token and not an admin path
+  // Redirect to login if no token exists for protected routes
   if (!token) {
     return NextResponse.redirect(new URL('/auth/login', req.url))
+  }
+
+  // Admin route protection
+  if (adminPaths.includes(path)) {
+    if (token.role !== 'ADMIN') {
+      console.log('Unauthorized admin access attempt:', token)
+      return NextResponse.redirect(new URL('/dashboard', req.url))
+    }
+  }
+
+  // User route protection
+  if (userPaths.includes(path)) {
+    if (token.role !== 'USER' && token.role !== 'ADMIN') {
+      console.log('Unauthorized user access attempt:', token)
+      return NextResponse.redirect(new URL('/auth/login', req.url))
+    }
   }
 
   return NextResponse.next()
@@ -36,8 +50,9 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     '/',
+    '/dashboard/:path*', 
     '/admin/:path*', 
-    '/dashboard/:path*',
-    '/auth/login'
+    '/auth/login', 
+    '/auth/signup'
   ]
 }

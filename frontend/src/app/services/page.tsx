@@ -56,7 +56,7 @@ export default function Services() {
                 <h3 className="text-lg font-semibold leading-8 tracking-tight text-gray-900">International Shipping</h3>
               </div>
               <p className="mt-4 text-base leading-7 text-gray-600">
-                Ship to and from anywhere in the world with our extensive network of international shipping partners and carriers.
+                Ship to and from Rwanda with our extensive network of international shipping partners and carriers.
               </p>
             </div>
 

@@ -47,13 +47,8 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/faq" className="text-sm leading-6 text-gray-300 hover:text-white">
+                    <Link href="/help" className="text-sm leading-6 text-gray-300 hover:text-white">
                       FAQs
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/tracking" className="text-sm leading-6 text-gray-300 hover:text-white">
-                      Track Package
                     </Link>
                   </li>
                 </ul>
@@ -71,11 +66,6 @@ export default function Footer() {
                   <li>
                     <Link href="/pricing" className="text-sm leading-6 text-gray-300 hover:text-white">
                       Pricing
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/careers" className="text-sm leading-6 text-gray-300 hover:text-white">
-                      Careers
                     </Link>
                   </li>
                 </ul>
