@@ -21,14 +21,21 @@ jobs:
         with:
           node-version: 18
 
+      - name: 📂 Navigate to frontend directory
+        run: cd eazyshiprwanda/frontend
+
       - name: 📦 Install dependencies
-        run: npm install
+        run: |
+          cd eazyshiprwanda/frontend
+          npm install
 
       - name: 🚀 Build Next.js as static files
-        run: npm run build && npm run export
+        run: |
+          cd eazyshiprwanda/frontend
+          npm run build && npm run export
 
       - name: 📁 Upload to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: out  # The "out" folder contains the exported static files
+          folder: eazyshiprwanda/frontend/out  # Path to the 'out' folder inside 'frontend'
