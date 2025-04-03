@@ -1,4 +1,3 @@
-// c:\Users\Admin\CascadeProjects\eazyship-rwanda\frontend\src\app\admin\dashboard\layout.tsx
 'use client'
 
 import * as React from 'react'
