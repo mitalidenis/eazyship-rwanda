@@ -20,8 +20,8 @@ export default function ShipmentsPage() {
     senderAddress: '',
     fromCountry: '',
     toCountry: '',
-    ecommerceStore: '', // New field
-    productId: '',      // New field
+    ecommerceStore: '', 
+    productId: '',      
     weight: '',
     length: '',
     width: '',
@@ -73,8 +73,8 @@ export default function ShipmentsPage() {
       senderAddress: '',
       fromCountry: '',
       toCountry: '',
-      ecommerceStore: '', // Reset new fields
-      productId: '',      // Reset new fields
+      ecommerceStore: '', 
+      productId: '',      
       weight: '',
       length: '',
       width: '',
@@ -89,8 +89,8 @@ export default function ShipmentsPage() {
       { field: 'senderName', message: 'Please enter sender name' },
       { field: 'fromCountry', message: 'Please select from country' },
       { field: 'toCountry', message: 'Please select to country' },
-      { field: 'ecommerceStore', message: 'Please select e-commerce store' }, // New validation
-      { field: 'productId', message: 'Please enter product ID' },            // New validation
+      { field: 'ecommerceStore', message: 'Please select e-commerce store' }, 
+      { field: 'productId', message: 'Please enter product ID' },            
       { field: 'weight', message: 'Please enter package weight' },
       { field: 'length', message: 'Please enter package length' },
       { field: 'width', message: 'Please enter package width' },
@@ -130,8 +130,8 @@ export default function ShipmentsPage() {
       estimatedDelivery: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
       weight: `${shippingDetails.weight} kg`,
       type: shippingDetails.shippingType === 'express' ? 'Express' : 'Standard',
-      ecommerceStore: shippingDetails.ecommerceStore, // New field
-      productId: shippingDetails.productId           // New field
+      ecommerceStore: shippingDetails.ecommerceStore, 
+      productId: shippingDetails.productId           
     }
 
     const updatedShipments = [...shipments, newShipment]
