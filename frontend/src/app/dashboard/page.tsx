@@ -14,7 +14,7 @@ const countries = [
   'South Africa'
 ]
 
-// Define interfaces for type safety
+
 interface FormData {
   fromCountry: string
   toCountry: string
