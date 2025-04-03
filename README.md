@@ -3,7 +3,7 @@
 
 # **📦 EazyShip Rwanda - Smart Logistics Management**  
 
-🚀 **Welcome to EazyShip Rwanda!** This is a **modern shipping and logistics platform** built to simplify **shipment tracking, management, and delivery operations** in Rwanda.  
+**Welcome to EazyShip Rwanda!** This is a **modern shipping and logistics platform** built to simplify **shipment tracking, management, and delivery operations** in Rwanda.  
 
 Whether you're a **casual user** tracking your shipments or an **admin managing multiple orders**, EazyShip Rwanda provides a **seamless experience** with real-time updates and a **powerful admin dashboard**.  
 
