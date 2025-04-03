@@ -22,7 +22,7 @@ jobs:
           node-version: 18
 
       - name: 📂 Navigate to frontend directory
-        run: cd eazyshiprwanda/frontend
+        run: cd eazyship-rwanda/frontend
 
       - name: 📦 Install dependencies
         run: |
