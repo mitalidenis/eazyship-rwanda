@@ -38,4 +38,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: eazyshiprwanda/frontend/out  # Path to the 'out' folder inside 'frontend'
+          folder: eazyship-rwanda/frontend/out  # Path to the 'out' folder inside 'frontend'
