@@ -12,8 +12,7 @@ export default function AdminSettingsPage() {
   if (status === 'authenticated' && session?.user?.role !== UserRole.ADMIN) {
     router.push('/dashboard')
   }
-
-  // Copy the exact implementation from user dashboard settings page
+  
   return (
     <div className="min-h-screen bg-primary-600 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-xl mx-auto bg-white shadow-md rounded-lg p-8">
