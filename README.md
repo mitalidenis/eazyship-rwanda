@@ -1,153 +1,221 @@
-# EazyShip Rwanda
-
-EazyShip Rwanda is a modern and efficient platform designed for seamless shipment tracking, e-commerce integration, and secure user management. It offers real-time shipment tracking, estimated delivery calculations, transparent shipping and customs fee assessments, multiple payment options, automated notifications, and direct integration with leading e-commerce platforms.
-
-## Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Environment Variables](#environment-variables)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Features
-
-- **Secure User Authentication with Two-Factor Authentication (2FA)**
-- **Real-time Shipment Tracking** with instant updates
-- **Estimated Delivery Time Calculation** based on optimized logistics data
-- **Advanced Shipping and Customs Fee Calculator** for cost transparency
-- **Comprehensive Order Management System** for seamless tracking and updates
-- **Automated Email & SMS Notifications** for shipment and account updates
-- **Direct Integration with E-commerce Platforms** (Kikuu, Alibaba, Amazon) for automated tracking
-
-## Tech Stack
-
-### Frontend
-
-- **Next.js** – React-based framework for server-side rendering and static site generation
-- **TypeScript** – Ensures type safety and maintainability
-- **Tailwind CSS** – Provides a modern, responsive UI with utility-based styling
-- **Redux Toolkit** – Manages state efficiently
-- **React Query** – Optimized data fetching and state synchronization
-
-### Backend
-
-- **Node.js** – Scalable JavaScript runtime for backend development
-- **Express.js** – Lightweight and flexible web framework
-- **PostgreSQL** – Reliable relational database for structured data management
-- **Redis** – High-performance caching system for faster response times
-- **JWT Authentication** – Secure token-based authentication for user sessions
-
-### DevOps & Security
-
-- **Docker** – Ensures containerized, portable deployment across environments
-- **AES-256 Encryption** – Industry-standard encryption for data protection
-- **Role-Based Access Control (RBAC)** – Manages permissions and access levels
-- **GDPR Compliance** – Ensures adherence to data privacy regulations
-
-### Security Measures
-
-- **Data Encryption (AES-256) for Secure Storage**
-- **Rate Limiting & DDoS Protection** to prevent unauthorized access
-- **Regular Security Audits and Penetration Testing** for vulnerability assessment
-- **Secure Session Management** to safeguard user sessions
-
-## Installation
-
-### Prerequisites
-
-Ensure you have the following installed on your system:
-
-- **Node.js** (Latest LTS Version)
-- **Docker** (for containerized deployment)
-- **PostgreSQL** (Database setup)
-- **Redis** (For caching and session management)
-
-### Backend Setup
-
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/denismitali17/eazyship-rwanda.git
-    cd eazyship-rwanda/backend
-    ```
-
-2. Install dependencies:
-    ```sh
-    npm install
-    ```
-
-3. Configure environment variables:
-    - Create a `.env` file in the backend directory using the provided `.env.example` template.
-    - Update database, authentication, and API configurations.
-
-4. Start the backend server:
-    ```sh
-    npm start
-    ```
-
-### Frontend Setup
-
-1. Navigate to the frontend directory:
-    ```sh
-    cd ../frontend
-    ```
-
-2. Install frontend dependencies:
-    ```sh
-    npm install
-    ```
-
-3. Start the frontend development server:
-    ```sh
-    npm run dev
-    ```
-
-## Usage
-
-1. Open a browser and visit `http://localhost:3000` to access the application.
-2. Use the shipment tracking system to track packages in real time.
-3. Utilize the fee calculator to estimate shipping and customs charges.
-4. Manage orders through the secure dashboard.
-
-## Environment Variables
-
-Ensure you set up the following environment variables in the `.env` file before running the application:
-
-- `DATABASE_URL` – PostgreSQL connection string
-- `REDIS_URL` – Redis instance connection string
-- `JWT_SECRET` – Secret key for JWT authentication
-- `EMAIL_SERVICE` – Email provider configuration
-- `EMAIL_USER` – Email service username
-- `EMAIL_PASS` – Email service password
-- `SMS_API_KEY` – API key for SMS notifications
-
-## Contributing
-
-We welcome contributions to enhance and expand EazyShip Rwanda. Follow these steps to contribute:
-
-1. Fork the repository.
-2. Create a new branch:
-    ```sh
-    git checkout -b feature/your-feature
-    ```
-3. Commit your changes:
-    ```sh
-    git commit -m "Add new feature: Your Feature Name"
-    ```
-4. Push your changes:
-    ```sh
-    git push origin feature/your-feature
-    ```
-5. Open a Pull Request for review.
-
-## License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for full details.
 
 ---
 
-### **Contact & Support**
-For support or inquiries, please contact our team via email at **d.mitali1@alustudent.com** or visit our website.
+# **📦 EazyShip Rwanda - Smart Logistics Management**  
 
+🚀 **Welcome to EazyShip Rwanda!** This is a **modern shipping and logistics platform** built to simplify **shipment tracking, management, and delivery operations** in Rwanda.  
+
+Whether you're a **casual user** tracking your shipments or an **admin managing multiple orders**, EazyShip Rwanda provides a **seamless experience** with real-time updates and a **powerful admin dashboard**.  
+
+---
+
+## **🌟 Features**  
+
+✔ **Sign Up & Log In** – Create an account and securely log in.  
+✔ **Track Shipments** – See where your package is in real-time.  
+✔ **Manage Orders** – View history and status of shipments.  
+✔ **Admin Dashboard** – Manage users, shipments, and analytics.  
+
+📢 **Coming Soon:** Live tracking and email notifications!  
+
+---
+
+## **🛠 How to Set Up EazyShip Rwanda (Step-by-Step Guide)**  
+
+### **1️⃣ Prerequisites**  
+Before you begin, make sure you have the following installed on your computer:  
+
+✅ **Node.js (v18+)** → [Download Node.js](https://nodejs.org/)  
+✅ **npm or yarn** → Comes with Node.js  
+✅ **PostgreSQL** → [Download PostgreSQL](https://www.postgresql.org/download/)  
+✅ **Git** → [Download Git](https://git-scm.com/)  
+
+### **2️⃣ Clone the Repository**  
+Open your **terminal (Command Prompt, Git Bash, or Terminal on macOS/Linux)** and run:  
+
+```bash
+git clone https://github.com/denismitali17/eazyship-rwanda.git
+```
+
+Now, navigate into the project folder:  
+
+```bash
+cd eazyship-rwanda/frontend
+```
+
+---
+
+### **3️⃣ Install Project Dependencies**  
+Run the following command to install all required packages:  
+
+```bash
+npm install
+```
+
+If you're using **yarn**, use:  
+
+```bash
+yarn install
+```
+
+---
+
+### **4️⃣ Set Up Environment Variables**  
+EazyShip uses **environment variables** to store **database credentials** and **authentication secrets**.  
+
+1. **Create an `.env` file** in the `frontend/` directory:  
+```bash
+cp .env.example .env
+```
+
+2. **Edit the `.env` file** and update the values:  
+
+```env
+DATABASE_URL=your_postgresql_connection_string
+NEXTAUTH_SECRET=your_nextauth_secret_key
+NEXTAUTH_URL=http://localhost:3000
+```
+
+📌 **Where do I get these values?**  
+- `DATABASE_URL`: If using PostgreSQL locally, it might look like this:  
+  ```
+  postgresql://username:password@localhost:5432/eazyship
+  ```
+- `NEXTAUTH_SECRET`: Generate a secret with this command:  
+  ```bash
+  openssl rand -base64 32
+  ```
+- `NEXTAUTH_URL`: If running locally, set it to:  
+  ```
+  http://localhost:3000
+  ```
+
+---
+
+### **5️⃣ Set Up the Database**  
+Since EazyShip uses **PostgreSQL**, you need to create the database and apply migrations.  
+
+1. **Make sure PostgreSQL is running** on your system.  
+2. Run the following command to create the database tables:  
+
+```bash
+npx prisma migrate dev
+```
+
+💡 This will apply all **database schema changes** and create the necessary tables.  
+
+To view your database structure, you can also run:  
+
+```bash
+npx prisma studio
+```
+
+---
+
+### **6️⃣ Start the Development Server**  
+Run the following command to **start the server**:  
+
+```bash
+npm run dev
+```
+
+After a few seconds, your project will be **live on:**  
+
+```bash
+http://localhost:3000
+```
+
+---
+
+### **7️⃣ Testing the Setup**  
+To ensure everything is working correctly:  
+
+- **Sign up** as a new user  
+- **Log in** and track shipments  
+- **Visit the Admin Dashboard** (only if you have an admin account)  
+
+If everything works, **you're good to go!** 🎉  
+
+---
+
+## **🔧 Tech Stack**  
+
+### **Frontend (User Interface)**  
+- **Next.js 14** – Fast & SEO-friendly  
+- **React** – Component-based UI  
+- **TypeScript** – Type-safe code  
+- **Tailwind CSS** – Beautiful, responsive styles  
+- **Heroicons** – Stylish icons  
+
+### **Backend (Server & Database)**  
+- **Next.js API Routes** – Server-side logic  
+- **Prisma ORM** – Database interaction  
+- **NextAuth.js** – Secure authentication  
+- **PostgreSQL (via Supabase)** – Data storage  
+
+### **Deployment (Going Live)**  
+- **Vercel** – Fast hosting with automatic deployment  
+- **GitHub Actions** – Automated testing and deployment  
+
+---
+
+## **🔐 Security Features**  
+
+✔ **Encrypted Passwords** – Uses bcrypt to store passwords securely.  
+✔ **Role-Based Access** – Admins have higher privileges.  
+✔ **Secure Authentication** – Login protected with NextAuth.js.  
+✔ **CSRF Protection** – Prevents security threats.  
+
+---
+
+## **🌍 Environment Variables Reference**  
+
+| Variable            | Description                         | Example Value  |
+|--------------------|---------------------------------|--------------|
+| `DATABASE_URL`     | PostgreSQL database connection | `postgresql://user:password@localhost:5432/eazyship` |
+| `NEXTAUTH_SECRET`  | Secret key for authentication  | `your_generated_secret_key` |
+| `NEXTAUTH_URL`     | App URL (local or live)        | `http://localhost:3000` |
+
+---
+
+## **🚀 What's Next? (Upcoming Features)**  
+
+🔜 **Live Shipment Tracking** – Know exactly where your package is in real-time!  
+🌍 **Multi-Language Support** – Making EazyShip accessible to everyone.  
+📧 **Enhanced Email Notifications** – Get alerts for shipment updates.  
+
+---
+
+## **🤝 Want to Contribute?**  
+
+We **welcome open-source contributors!** Follow these steps:  
+
+1. **Fork the repository**  
+2. **Create a feature branch** (`git checkout -b feature-name`)  
+3. **Commit your changes** (`git commit -m "Description of changes"`)  
+4. **Push to GitHub** (`git push origin feature-name`)  
+5. **Create a Pull Request**  
+
+Your contributions **help improve EazyShip for everyone!** 🚀  
+
+---
+
+## **📄 License**  
+
+This project is licensed under the **MIT License**, meaning **you can use, modify, and distribute it freely!**  
+
+---
+
+## **📞 Contact & Support**  
+
+📧 **Email:** d.mitali1@alustudent.com
+
+🌐 **Website:** 
+
+📍 **Made with ❤️ in Rwanda**  
+
+---
+
+### **👏 Thank you for using EazyShip Rwanda! Let's revolutionize logistics together! 🚚✨**  
+
+---
