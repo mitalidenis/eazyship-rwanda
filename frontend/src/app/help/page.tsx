@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 const faqs = [
   {
@@ -81,12 +82,12 @@ export default function HelpPage() {
                 <p className="text-gray-500 mb-4">
                   Our support team is available 24/7 to assist you with any questions or concerns.
                 </p>
-                <a
-                  href="mailto:support@eazyship.rw"
+                <Link
+                  href="/contact"
                   className="text-primary-600 hover:text-primary-500"
                 >
                   Contact Support
-                </a>
+                </Link>
               </div>
 
               <div className="bg-white shadow rounded-lg p-6 text-center">
