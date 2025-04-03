@@ -1,4 +1,3 @@
-// c:\Users\Admin\CascadeProjects\eazyship-rwanda\frontend\src\types\next-auth.d.ts
 import 'next-auth'
 import { UserRole } from '@prisma/client'
 
