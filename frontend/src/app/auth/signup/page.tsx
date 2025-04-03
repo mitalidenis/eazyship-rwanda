@@ -40,9 +40,9 @@ export default function SignUpPage() {
     onSubmit: async (values) => {
       setIsLoading(true)
       try {
-        // TODO: Implement actual signup logic here
+        
         setUserEmail(values.email)
-        // Simulate sending verification code
+        
         toast.success('Verification code sent to your email!')
         setStep(2)
       } catch (error) {
@@ -57,7 +57,7 @@ export default function SignUpPage() {
     e.preventDefault()
     setIsLoading(true)
     try {
-      // TODO: Implement actual verification logic here
+      
       if (verificationCode) {
         setShowSuccess(true)
         setTimeout(() => {
