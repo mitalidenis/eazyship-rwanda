@@ -45,7 +45,7 @@ export default function Login() {
           return
         }
 
-        // Use server-side redirect for more reliable routing
+        
         if (values.role === 'admin') {
           router.push('/admin/dashboard')
         } else {
