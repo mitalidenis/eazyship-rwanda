@@ -27,7 +27,7 @@ export async function GET(req: Request) {
         }
       },
       orderBy: {
-        id: 'desc' // Changed from createdAt to id
+        id: 'desc' 
       }
     })
 
