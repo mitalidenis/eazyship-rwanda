@@ -19,7 +19,7 @@ export default function ContactPage() {
       message: Yup.string().required('Message is required'),
     }),
     onSubmit: (values) => {
-      // Here you would typically send the form data to your backend
+      
       console.log(values)
       toast.success('Message sent successfully! We will get back to you soon.')
       formik.resetForm()
